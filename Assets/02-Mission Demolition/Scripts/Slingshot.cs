@@ -82,7 +82,9 @@ public class Slingshot : MonoBehaviour
             aimingMode = false; //The mouse has been released
             projectileRigidbody.isKinematic = false;
             projectileRigidbody.velocity = -mouseDelta * velocityMult;
-            projectile = null;
+            FollowCam.POI = projectile; //Assigning projectile to FollowCam.POI
+            projectile = null;  //projectile = no object
+
         }
     }
 }
