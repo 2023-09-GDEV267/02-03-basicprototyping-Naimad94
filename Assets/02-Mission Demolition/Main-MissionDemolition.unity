@@ -185,10 +185,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabProjectile: {fileID: 3043075654627263329, guid: 5e3098421e1bc01429cd9013f48df5da, type: 3}
-  velocityMult: 8
+  velocityMult: 9
   launchPoint: {fileID: 641742650}
   launchPos: {x: 0, y: 0, z: 0}
-  projectile: {fileID: 0}
+  projectile: {fileID: 3043075654627263329, guid: 5e3098421e1bc01429cd9013f48df5da, type: 3}
   aimingMode: 0
 --- !u!1 &359891808
 GameObject:

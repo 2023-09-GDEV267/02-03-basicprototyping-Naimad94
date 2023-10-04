@@ -20,7 +20,7 @@ public class Slingshot : MonoBehaviour
 
     void Awake()
     {
-        Transform launchPointTrans = transform.Find("LaunchPoint"); //transform.Find ("LaunchPoint") sarches for a child of slingshot named LaunchPoint and returns its transform.
+        Transform launchPointTrans = transform.Find("LaunchPoint"); //transform.Find ("LaunchPoint") searches for a child of slingshot named LaunchPoint and returns its transform.
         launchPoint = launchPointTrans.gameObject;  //Gets the game object associated with that transform and assigns it to the GameObject field launchPoint.
         launchPoint.SetActive(false); //The SetActive method on GameObject like launchPoint tells the game whether or not to ignore them. 
         launchPos = launchPointTrans.position;
@@ -49,6 +49,10 @@ public class Slingshot : MonoBehaviour
         projectile.transform.position = launchPos;
         //Set it as kinematic for now
         projectile.GetComponent<Rigidbody>().isKinematic = true;
+
+        //Set it to isKinematic for now.
+        projectileRigidbody = projectile.GetComponent<Rigidbody>();
+        projectileRigidbody.isKinematic = true;
     }
 
     private void Update()
@@ -69,10 +73,11 @@ public class Slingshot : MonoBehaviour
             mouseDelta = mouseDelta * maxMagnitude;
         }
 
+        //Move the projectile to this new position
         Vector3 projPos = launchPos + mouseDelta;
         projectile.transform.position = projPos;
 
-        if(Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0))
         {
             aimingMode = false; //The mouse has been released
             projectileRigidbody.isKinematic = false;
