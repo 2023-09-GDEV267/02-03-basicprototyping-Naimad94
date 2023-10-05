@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     //Declarations
     private Rigidbody rb;
     private float movementX; //Reason it's a float value is because we want better movement instead of
-    private float movementZ; //an int which will give us whole num and not give us acurate movement
+    private float movementY; //an int which will give us whole num and not give us acurate movement
 
     // Start is called before the first frame update
     void Start()
@@ -22,13 +22,13 @@ public class PlayerController : MonoBehaviour
         Vector2 movementVector = movementValue.Get<Vector2>();
 
         movementX = movementVector.x; //Assigning movementVector.x to movementX
-        movementZ = movementVector.z; //Assigning movementVector.z to movementZ
+        movementY = movementVector.y; //Assigning movementVector.z to movementZ
     }
 
     private void FixedUpdate()
     {
         //Assiging a new object of Vector3 to Vector3 movement. Don't know whats the parameters mean.
-        Vector3 movement = new Vector3 (movementX, 0.0f, movementZ);
+        Vector3 movement = new Vector3 (movementX, 0.0f, movementY);
         rb.AddForce(movement); //Adding force to rb(Rigidbody component)
     }
 }

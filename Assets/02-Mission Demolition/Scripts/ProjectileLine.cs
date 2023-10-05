@@ -13,7 +13,6 @@ public class ProjectileLine : MonoBehaviour
     private LineRenderer line;
     private GameObject _poi;
     private List<Vector3> points;
-    private object get;
 
     private void Awake()
     {
@@ -85,7 +84,7 @@ public class ProjectileLine : MonoBehaviour
     }
 
     //Returns the location of the most recently added point
-    public Vector3 lastPoint()
+    public Vector3 lastPoint
     {
         get 
         { 

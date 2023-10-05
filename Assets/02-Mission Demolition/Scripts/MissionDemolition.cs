@@ -6,13 +6,12 @@ using UnityEngine.UI;
 public enum GameMode
 {
     idle,
-    playing, 
+    playing,
     levelEnd
 }
-
 public class MissionDemolition : MonoBehaviour
 {
-    static private MissionDemolition S; //a private Singleton
+    static private MissionDemolition S; //A private Singleton
 
     [Header("Set in Inspector")]
     public Text uitLevel; //The UIText_Level Text
@@ -35,7 +34,7 @@ public class MissionDemolition : MonoBehaviour
         S = this; //Define the Slingshot
 
         level = 0;
-        levelMax = castles.Length;
+        levelMax = castle.Length;
         StartLevel();
     }
 
@@ -48,8 +47,8 @@ public class MissionDemolition : MonoBehaviour
     }
 
     //Destroy old projectiles if they exist
-    GameObject[] gos = GameObject.FindObjectsWithTag("Projectile");
-    for each (GameObject pTemp in gos)
+    GameObject[] gos = GameObject.FindGameObjectsWithTag("Projectile");
+    foreach (GameObject pTemp in gos)
     {
         Destroy(pTemp);
     }
