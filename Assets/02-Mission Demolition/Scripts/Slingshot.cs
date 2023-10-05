@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Slingshot : MonoBehaviour
 {
+    static private Slingshot S;
     //fierldsd set in the Unity Inspector pane
     [Header("Set in Inspector")]
     public GameObject prefabProjectile;
@@ -18,8 +19,18 @@ public class Slingshot : MonoBehaviour
 
     private Rigidbody projectileRigidbody;
 
+    static public Vector3 LAUNCH_POS
+    {
+        get
+        {
+            if (S == null) return Vector3.zero;
+            return S.launchPos;
+        }
+    }
+
     void Awake()
     {
+        S = this;
         Transform launchPointTrans = transform.Find("LaunchPoint"); //transform.Find ("LaunchPoint") searches for a child of slingshot named LaunchPoint and returns its transform.
         launchPoint = launchPointTrans.gameObject;  //Gets the game object associated with that transform and assigns it to the GameObject field launchPoint.
         launchPoint.SetActive(false); //The SetActive method on GameObject like launchPoint tells the game whether or not to ignore them. 
