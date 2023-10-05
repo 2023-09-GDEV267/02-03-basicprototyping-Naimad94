@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 public enum GameMode
 {
@@ -18,7 +19,7 @@ public class MissionDemolition : MonoBehaviour
     public Text uitShots; //The UIText_Shots text
     public Text uitButton; //The Text on UIButton_View
     public Vector3 castlePos; //The place to put castles
-    public GameObject[] casltes; //An array of the castles
+    public GameObject[] castles; //An array of the castles
 
     [Header("Set Dynamically")]
     public int level; //The current level
@@ -34,13 +35,13 @@ public class MissionDemolition : MonoBehaviour
         S = this; //Define the Slingshot
 
         level = 0;
-        levelMax = castle.Length;
+        levelMax = castles.Length;
         StartLevel();
     }
 
     void StartLevel()
     {
-        if(castle != null) 
+        if (castle != null)
         {
             Destroy(castle);
         }
@@ -48,14 +49,12 @@ public class MissionDemolition : MonoBehaviour
 
     //Destroy old projectiles if they exist
     GameObject[] gos = GameObject.FindGameObjectsWithTag("Projectile");
-    foreach (GameObject pTemp in gos)
-    {
+    foreach (GameObject pTemp in gos){
         Destroy(pTemp);
     }
-
     //Instantiate the new castle
     castle = Instantiate<GameObject>(castles[level]);
-    castle.transform.position = casltePos;
+    castle.transform.position = castlePos;
     shotsTaken = 0;
     //Reset the camera
     SwitchView("Show Both");
